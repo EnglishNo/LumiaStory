@@ -1,18 +1,5 @@
 ﻿using UnityEngine;
 
-public enum ElementType
-{
-    None,     // 무
-    Water,    // 물
-    Fire,     // 불
-    Nature,   // 자연
-    River,    // 강
-    Electric, // 전기
-    Poison,   // 독
-    Light,    // 빛
-    Dark      // 어둠
-}
-
 [CreateAssetMenu(fileName = "NewMonsterData", menuName = "Monster/Monster Data")]
 public class MonsterData : ScriptableObject
 {

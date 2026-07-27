@@ -27,15 +27,15 @@
 
             case ElementType.Fire: // 불: 자연/독에 1.5배, 물/강에 0.5배
                 if (defender == ElementType.Nature || defender == ElementType.Poison) return 1.5f;
-                if (defender == ElementType.Water || defender == ElementType.River) return 0.5f;
+                if (defender == ElementType.Water || defender == ElementType.Solid) return 0.5f;
                 break;
 
             case ElementType.Nature: // 자연: 강/전기에 1.5배, 독에 0.5배
-                if (defender == ElementType.River || defender == ElementType.Electric) return 1.5f;
+                if (defender == ElementType.Solid || defender == ElementType.Electric) return 1.5f;
                 if (defender == ElementType.Poison) return 0.5f;
                 break;
 
-            case ElementType.River: // 강: 불/독에 1.5배, 자연에 0.5배
+            case ElementType.Solid: // 강: 불/독에 1.5배, 자연에 0.5배
                 if (defender == ElementType.Fire || defender == ElementType.Poison) return 1.5f;
                 if (defender == ElementType.Nature) return 0.5f;
                 break;
@@ -47,7 +47,7 @@
 
             case ElementType.Poison: // 독: 자연/물에 1.5배, 불/강에 0.5배
                 if (defender == ElementType.Nature || defender == ElementType.Water) return 1.5f;
-                if (defender == ElementType.Fire || defender == ElementType.River) return 0.5f;
+                if (defender == ElementType.Fire || defender == ElementType.Solid) return 0.5f;
                 break;
 
             case ElementType.Light: // 빛: 어둠에 1.5배 (상극)

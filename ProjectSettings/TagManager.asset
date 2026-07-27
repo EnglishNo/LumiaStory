@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Ladder
   - OneWayPlatform
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -299,6 +299,38 @@ public class MonsterBase : MonoBehaviour
     }
     #endregion
 
+    #region 플레이어 공격 (접촉 피격)
+    // 몬스터가 플레이어와 처음 부딪혔을 때
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            AttackPlayer(collision.gameObject);
+        }
+    }
+
+    // 플레이어가 몬스터와 계속 비비고 있을 때 (무적 시간이 끝난 후 계속 닿아있다면 재피격)
+    protected virtual void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            AttackPlayer(collision.gameObject);
+        }
+    }
+
+    protected virtual void AttackPlayer(GameObject target)
+    {
+        if (target.TryGetComponent<Player>(out Player player))
+        {
+            // MonsterData에서 물리 공격력 가져오기 (데이터가 없으면 기본값 10f)
+            float damage = (monsterData != null) ? monsterData.physicalAtk : 10f;
+
+            // 플레이어에게 물리 데미지(DamageType.Physical)와 몬스터 위치 전달
+            player.TakeDamage(damage, transform.position, DamageType.Physical);
+        }
+    }
+    #endregion
+
     protected virtual void OnDrawGizmosSelected()
     {
         if (canDetectPlayer)
